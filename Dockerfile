@@ -7,5 +7,5 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
  && apt-get -qq update \
  && apt-get -y install git libjpeg-dev libfreetype6-dev libffi-dev libsqlite3-dev postgresql-client \
- && apt-get -y install gettext nodejs yarn unzip libnss3 libgconf-2-4 xvfb \
+ && apt-get -y install gettext nodejs yarn \
  && apt-get -y install -f
