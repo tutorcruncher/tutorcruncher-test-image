@@ -1,6 +1,6 @@
 FROM python:3.7.2
 
-MAINTAINER Samuel Colvin <s@muelcolvin.com>
+LABEL maintainer="Samuel Colvin <s@muelcolvin.com>"
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
