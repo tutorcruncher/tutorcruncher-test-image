@@ -12,6 +12,7 @@ apt-get -qq update
 apt-get -y install python3.7 python3.7-dev python3.7-venv
 apt-get -y install python3-distutils
 apt-get -y install gettext nodejs yarn git
+apt-get -y install poppler-utils
 apt-get -y autoremove
 
 rm /usr/bin/python3
