@@ -8,6 +8,8 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 
 export DEBIAN_FRONTEND=noninteractive
 
+apt-get -y install software-properties-common
+add-apt-repository ppa:deadsnakes/ppa
 apt-get -qq update
 apt-get -y install python3.9 python3.9-dev python3.9-venv
 apt-get -y install python3-distutils
