@@ -1,6 +1,6 @@
-FROM heroku/heroku:18.v16
+FROM heroku/heroku:20
 
-LABEL maintainer="Samuel Colvin <s@muelcolvin.com>"
+LABEL maintainer="Tom Hamilton Stubber <tomhamiltonstubber@gmail.com>"
 
 WORKDIR /root/
 ADD install.sh install.sh
