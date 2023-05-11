@@ -14,6 +14,7 @@ apt-get -qq update
 apt-get -y install python3.10 python3.10-dev python3.10-venv
 apt-get -y install python3-distutils
 apt-get -y install gettext nodejs yarn git
+apt-get -y install pkg-config libcairo2-dev
 apt-get -y install poppler-utils
 apt-get -y install tzdata
 apt-get -y autoremove
