@@ -1,4 +1,4 @@
-FROM heroku/heroku:20
+FROM heroku/heroku:22
 
 LABEL maintainer="Tom Hamilton Stubber <tomhamiltonstubber@gmail.com>"
 
