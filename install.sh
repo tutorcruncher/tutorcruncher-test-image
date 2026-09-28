@@ -10,7 +10,7 @@ apt-get -y install software-properties-common
 add-apt-repository -y ppa:deadsnakes/ppa
 apt-get -qq update
 apt-get -y install python3.11 python3.11-dev python3.11-venv python3.11-distutils
-apt-get -y install gettext nodejs git
+apt-get -y install gettext nodejs git make gcc
 apt-get -y install pkg-config libcairo2-dev
 apt-get -y install poppler-utils
 apt-get -y install tzdata

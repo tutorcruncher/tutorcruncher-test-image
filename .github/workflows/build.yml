@@ -37,6 +37,9 @@ jobs:
             git --version
             msgfmt --version
             command -v pdftotext
+            make --version
+            # misaka ships no wheels, so this proves the image can still compile TC2's C extensions
+            pip install misaka
           '
 
       - if: github.ref == 'refs/heads/master'
