@@ -22,7 +22,9 @@ npm install -g yarn
 ln -sf /usr/bin/python3.11 /usr/bin/python3
 ln -sf /usr/bin/python3.11 /usr/bin/python
 
-curl -s https://bootstrap.pypa.io/get-pip.py | python
+# wheel needs a newer packaging than the debian python3-packaging software-properties-common pulls in, and pip can't
+# uninstall a debian package, so install pip alone
+curl -s https://bootstrap.pypa.io/get-pip.py | python - --no-wheel
 
 python -V
 pip -V
