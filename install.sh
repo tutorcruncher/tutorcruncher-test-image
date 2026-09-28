@@ -2,27 +2,25 @@
 
 set -ex
 
-curl -sL https://deb.nodesource.com/setup_22.x | bash -
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+curl -sL https://deb.nodesource.com/setup_26.x | bash -
 
 export DEBIAN_FRONTEND=noninteractive
 
 apt-get -y install software-properties-common
-add-apt-repository ppa:deadsnakes/ppa
+add-apt-repository -y ppa:deadsnakes/ppa
 apt-get -qq update
-apt-get -y install python3.11 python3.11-dev python3.11-venv
-apt-get -y install python3-distutils
-apt-get -y install gettext nodejs yarn git
+apt-get -y install python3.11 python3.11-dev python3.11-venv python3.11-distutils
+apt-get -y install gettext nodejs git
 apt-get -y install pkg-config libcairo2-dev
 apt-get -y install poppler-utils
 apt-get -y install tzdata
 apt-get -y autoremove
 
-rm /usr/bin/python3
-ln -s /usr/bin/python3.11 /usr/bin/python3
-rm /usr/bin/python
-ln -s /usr/bin/python3.11 /usr/bin/python
+# apt-key no longer exists on Ubuntu 26.04, so yarn's apt repo can't be added, and Node 25+ no longer bundles corepack
+npm install -g yarn
+
+ln -sf /usr/bin/python3.11 /usr/bin/python3
+ln -sf /usr/bin/python3.11 /usr/bin/python
 
 curl -s https://bootstrap.pypa.io/get-pip.py | python
 
@@ -30,3 +28,5 @@ python -V
 pip -V
 pip install -U pip
 pip -V
+node -v
+yarn -v
