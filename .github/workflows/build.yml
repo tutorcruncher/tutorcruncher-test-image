@@ -38,7 +38,7 @@ jobs:
             msgfmt --version
             command -v pdftotext
             make --version
-            # misaka ships no wheels, so this proves the image can still compile TC2's C extensions
+            # misaka ships no wheels, so this proves the image can still compile C extensions for TC2
             pip install misaka
           '
 
