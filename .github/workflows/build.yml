@@ -1,0 +1,52 @@
+name: build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+env:
+  IMAGE: tutorcruncher/tutorcruncher-test-image
+  # ubuntu stack, python version and node version - bump alongside Dockerfile/install.sh
+  TAG: ub26.py311.node26
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: docker/setup-buildx-action@v4
+
+      - uses: docker/build-push-action@v7
+        with:
+          context: .
+          load: true
+          tags: ${{ env.IMAGE }}:${{ env.TAG }}
+
+      - name: smoke test
+        run: |
+          docker run --rm "$IMAGE:$TAG" bash -exc '
+            test "$(id -u)" = 0
+            python -V | grep "^Python 3\.11\."
+            python3 -V | grep "^Python 3\.11\."
+            node -v | grep "^v26\."
+            yarn -v
+            pip install uv
+            uv --version
+            git --version
+            msgfmt --version
+            command -v pdftotext
+          '
+
+      - if: github.ref == 'refs/heads/master'
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - if: github.ref == 'refs/heads/master'
+        run: |
+          docker tag "$IMAGE:$TAG" "$IMAGE:latest"
+          docker push "$IMAGE:$TAG"
+          docker push "$IMAGE:latest"
