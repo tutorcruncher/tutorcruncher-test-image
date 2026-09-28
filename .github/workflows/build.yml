@@ -8,7 +8,7 @@ on:
 env:
   IMAGE: tutorcruncher/tutorcruncher-test-image
   # ubuntu stack, python version and node version - bump alongside Dockerfile/install.sh
-  TAG: ub26.py311.node26
+  TAG: ub26.py314.node26
 
 jobs:
   build:
@@ -28,8 +28,8 @@ jobs:
         run: |
           docker run --rm "$IMAGE:$TAG" bash -exc '
             test "$(id -u)" = 0
-            python -V | grep "^Python 3\.11\."
-            python3 -V | grep "^Python 3\.11\."
+            python -V | grep "^Python 3\.14\."
+            python3 -V | grep "^Python 3\.14\."
             node -v | grep "^v26\."
             yarn -v
             pip install uv
